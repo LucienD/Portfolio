@@ -8,12 +8,20 @@ var projet = {
             resume: req.body.resume,
             link: req.body.link
         }).save(function (err, projet) {
-            res(projet);
+            if (err) {
+                res(err);
+            } else {
+                res(projet);
+            }
         });
     },
     find: function (req, res) {
         Projet.find(function (err, projet) {
-            res(projet);
+            if (err) {
+                res(err);
+            } else {
+                res(projet);
+            }
         });
     },
     findById: function (req, res) {
@@ -21,7 +29,11 @@ var projet = {
                 _id: req.params.projet_id
             },
             function (err, projet) {
-                res(projet);
+                if (err) {
+                    res(err);
+                } else {
+                    res(projet);
+                }
             });
     },
     delete: function (req, res) {
@@ -30,8 +42,9 @@ var projet = {
         }, function (err, projet) {
             if (err) {
                 res(err);
+            } else {
+                res(projet);
             }
-            res(projet);
         });
     },
     put: function (req, res) {
@@ -40,18 +53,20 @@ var projet = {
         }, function (err, projet) {
             if (err) {
                 res(err);
+            } else {
+                projet.type = req.body.type;
+                projet.img = req.body.img;
+                projet.title = req.body.title;
+                projet.resume = req.body.resume;
+                projet.link = req.body.link;
+                projet.save(function (err, projet) {
+                    if (err) {
+                        res(err);
+                    } else {
+                        res(projet);
+                    }
+                });
             }
-            projet.type = req.body.type;
-            projet.img = req.body.img;
-            projet.title = req.body.tilre;
-            projet.resume = req.body.resume;
-            projet.link = req.body.link;
-            projet.save(function (err, projet) {
-                if (err) {
-                    res(err);
-                }
-                res(projet);
-            });
         });
     }
 };

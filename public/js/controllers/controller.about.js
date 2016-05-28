@@ -1,5 +1,5 @@
-angular.module('Portfolio').controller('ElementsMeCtrl', ['$scope', '$rootScope', 'Entourage', 'PostTool', '$animate',
-  function($scope, $rootScope, Entourage, PostTool, $animate) {
+angular.module('Portfolio').controller('ElementsMeCtrl', ['$scope', '$rootScope', 'EntourageService', 'PostTool', '$animate',
+  function($scope, $rootScope, EntourageService, PostTool, $animate) {
     $rootScope.isActive = false;
     $scope.pageClass = 'page-presentation content-me';
     $rootScope.page = 'elm-presentation me';
@@ -17,6 +17,6 @@ angular.module('Portfolio').controller('ElementsMeCtrl', ['$scope', '$rootScope'
       animationSteps: 60
     };
 
-    $scope.copains = Entourage.getIconEntourage();
+    $scope.copains = EntourageService.getEntourage();
   }
 ]);

@@ -8,7 +8,7 @@ var express = require("express"),
 
 
 var projet = require('./routes/projet');
-var mail = require('./routes/projet');
+var mail = require('./routes/mail');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -22,8 +22,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 mongoose.connect('mongodb://localhost/projets1842');
 
 
-app.use('/api', projet);
-app.use('/api', mail);
+app.use('/api/projet', projet);
+app.use('/mail', mail);
 
 
 app.listen(port, function () {

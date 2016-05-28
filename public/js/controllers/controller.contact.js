@@ -12,14 +12,19 @@ angular.module('Portfolio').controller('ElementsContactCtrl', ['$scope', '$http'
         $scope.mail = {
             from: "",
             text: "",
-            name: "",
-            phone: ""
+            name: ""
         };
+
         $scope.send = function () {
 
-            Mailer.sendMail($scope.mail).then(function (res) {
-                console.log(res);
-            });
+            if ($scope.mail.from != "" && $scope.mail.text != "" && $scope.mail.name != "") {
+                Mailer.sendMail($scope.mail).then(function (res) {
+                    console.log(res);
+                });
+            }else{
+             alert("Tu n'as pas tout rempli !");   
+            }
+
         }
 
  }]);

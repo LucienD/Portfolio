@@ -1,7 +1,12 @@
 //----------------------------------------------------Controller Menu page
-angular.module('Portfolio').controller('menuNavCtrl', ['$scope', '$rootScope', 'menuContent',
-  function($scope, $rootScope, menuContent) {
-    $rootScope.contents = menuContent.getMenuContents();
+angular.module('Portfolio').controller('menuNavCtrl', ['$scope', '$rootScope', 'MenuService',
+  function($scope, $rootScope, MenuService) {
+      
+
+    $rootScope.contents = MenuService.getMenu();
+
+      
+//    $rootScope.contents = menuContent.getMenuContents();
     $rootScope.isActive = false;
     $rootScope.Active = false;
 
@@ -13,7 +18,7 @@ angular.module('Portfolio').controller('menuNavCtrl', ['$scope', '$rootScope', '
     $rootScope.muteSound = function() {
       $rootScope.Active = !$rootScope.Active;
       $rootScope.isSound = !$rootScope.isSound;
-      if ($rootScope.isSound === true) {
+      if ($rootScope.isSound != false) {
         ion.sound.pause();
       } else {
         ion.sound.play("magic");
